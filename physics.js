@@ -96,6 +96,11 @@ function changePos() {
 		leftSpikes = generateSpikeArray();
 		updateLeftSpikes();
 	}
+	
+	if (xPos <= 50) {
+		collisionDetect(yPos);
+	}
+
 }
 
 function updateRightSpikes() {
@@ -110,6 +115,15 @@ function updateRightSpikes() {
 			$(spikeName).css('background-color', 'transparent');
 		}			
 	}
+}
+
+function collisionDetect(yPos) {
+	// check each spike
+	for (var i=0; i<10; i++) {
+		if (Math.abs(yPos-(50*i)) <= 50 && (leftSpikes[i] == 1)) {
+			console.log("collision with ", i);
+		}	
+	}	
 }
 
 function updateLeftSpikes() {
