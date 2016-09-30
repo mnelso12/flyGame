@@ -1,12 +1,16 @@
 // physics.js
+console.log("entering physics");
 
-var step = 6;
+var highScore = 0;
+var score = 0;
+
+var xVel = 5;
+var yVel = 3;	
+
 var delay = 30;
 var height = 0;
 var Hoffset = 0;
 var Woffset = 0;
-var ypos = 0;
-var xpos = 0;
 var pause = true;
 var interval;
 var name = navigator.appName;
@@ -15,11 +19,19 @@ if(name == "Microsoft Internet Explorer") name = true;
 else name = false;
 
 var xPos = 20;
-
-if(name) var yPos = document.body.clientHeight;
-else var yPos = window.innerHeight;
+var yPos = 0;
 
 function changePos() {
+	// update score header
+	var scoreheader = "Score: " + score;
+	$("#score").text(scoreheader);	
+
+	if (score >= highScore) {
+		highScore = score;
+		var highScoreHeader = "High Score: " + highScore;
+		$("#highScore").text(highScoreHeader);	
+	}
+
 	if(name) {
 		width = document.body.clientWidth;
 		height = document.body.clientHeight;
@@ -37,46 +49,43 @@ function changePos() {
 		document.getElementById('img').style.left = xPos + window.pageXOffset;
 	}
 
- 	// handle gravity
-	var xvel;
-	var yvel;	
+
+	// handle gravity
+	yVel += 1;
+	// terminal velocity
+	if (Math.yVel > 8) {
+		yVel = 8;
+	}
 
 	// handle direction change
 
 	// move in y direction
-	if (ypos) {
-		yPos = yPos + step;
-	}
-	else {
-		yPos = yPos - step;
-	}
+	yPos += yVel;
 
 	// change y direction
 	if (yPos < 0) {
-		ypos = 1;
-		yPos = 0;
+		yVel *= -1;
+		score = 0;
 	}
 
 	if (yPos >= (height - Hoffset)) {
-		ypos = 0;
+		yVel *= -1;
 		yPos = (height - Hoffset);
+		score = 0;
 	}
 
 	// move in x direction
-	if (xpos) {
-		xPos = xPos + step;
-	}
-	else {
-		xPos = xPos - step;
-	}
+	xPos += xVel;
 
+	// change x direction
 	if (xPos < 0) {
-		xpos = 1;
-		xPos = 0;
+		score++;
+		xVel *= -1;
 	}
 
 	if (xPos >= (width - Woffset)) {
-		xpos = 0;
+		score++;
+		xVel *= -1;
 		xPos = (width - Woffset);
 	}
 }
@@ -96,4 +105,16 @@ function pauseResume() {
 		pause = true;
 	}
 }
+
+
+$(document).ready(function(){
+		console.log("fake stuff");
+		$("#big").click(function(){
+			yVel = -20; 
+			});
+});
+
+
+
+
 start();
