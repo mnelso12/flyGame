@@ -102,12 +102,28 @@ function changePos() {
 		updateLeftSpikes();
 	}
 	
+	if (xPos <= 125) {
+		updateLeftSpikes();
+		collisionDetectAlmostLeft(yPos);
+	}
+	else {
+		closeLeftMouths();
+	}
+
+	if (xPos >= (width - Woffset - 125)) {
+		updateRightSpikes();
+		collisionDetectAlmostRight(yPos);
+	}
+	else {
+		closeRightMouths();
+	}
+
 	if (xPos <= 50) {
 		updateLeftSpikes();
 		collisionDetectLeft(yPos);
 	}
 
-	if (xPos >= (width - Woffset - 50)) {
+	if (xPos >= (width - Woffset - 25)) {
 		updateRightSpikes();
 		collisionDetectRight(yPos);
 	}
@@ -119,18 +135,51 @@ function handleCollision() {
 	score = 0;
 }
 
-function updateRightSpikes() {
-	//console.log("updating right spikes");
-	for (var i = 0; i < 10; i++) {
-		var spikeName = '#rightFrog' + i;
-		//console.log(spikeName);
-		if (rightSpikes[i] == 1) {
-			$(spikeName).css('background-color', 'blue');
-		}
+function handleAlmostCollision() {
+	console.log("almost collision...");
+}
+
+function closeRightMouths() {
+	for (var i=0; i<10; i++) {
+		var almostSpikeName = '#rightFrogAlmost' + i;
+		$(almostSpikeName).css('background-color', 'transparent');
+	}	
+}
+
+function closeLeftMouths() {
+	for (var i=0; i<10; i++) {
+		var almostSpikeName = '#leftFrogAlmost' + i;
+		$(almostSpikeName).css('background-color', 'transparent');
+	}	
+}
+
+
+function collisionDetectAlmostRight(yPos) {
+	// check each spike
+	for (var i=0; i<10; i++) {
+		var almostSpikeName = '#rightFrogAlmost' + i;
+		if (Math.abs(yPos-(50*i + 25)) <= 150 && (rightSpikes[i] == 1)) {
+			handleAlmostCollision();
+			$(almostSpikeName).css('background-color', 'red');
+		}	
 		else {
-			$(spikeName).css('background-color', 'transparent');
-		}			
-	}
+			$(almostSpikeName).css('background-color', 'transparent');
+		}	
+	}	
+}
+
+function collisionDetectAlmostLeft(yPos) {
+	// check each spike
+	for (var i=0; i<10; i++) {
+		var almostSpikeName = '#leftFrogAlmost' + i;
+		if (Math.abs(yPos-(50*i + 25)) <= 150 && (leftSpikes[i] == 1)) {
+			handleAlmostCollision();
+			$(almostSpikeName).css('background-color', 'red');
+		}	
+		else {
+			$(almostSpikeName).css('background-color', 'transparent');
+		}	
+	}	
 }
 
 function collisionDetectRight(yPos) {
@@ -151,6 +200,20 @@ function collisionDetectLeft(yPos) {
 			//console.log("left collision with ", i);
 		}	
 	}	
+}
+
+function updateRightSpikes() {
+	//console.log("updating right spikes");
+	for (var i = 0; i < 10; i++) {
+		var spikeName = '#rightFrog' + i;
+		//console.log(spikeName);
+		if (rightSpikes[i] == 1) {
+			$(spikeName).css('background-color', 'blue');
+		}
+		else {
+			$(spikeName).css('background-color', 'transparent');
+		}			
+	}
 }
 
 function updateLeftSpikes() {
