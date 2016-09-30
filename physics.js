@@ -4,7 +4,7 @@ console.log("entering physics");
 var highScore = 0;
 var score = 0;
 
-var xVel = 5;
+var xVel = 9;
 var yVel = 3;	
 
 var delay = 30;
@@ -20,8 +20,12 @@ else name = false;
 
 var xPos = 20;
 var yPos = 0;
+// generate original spikes
+var leftSpikes = generateSpikeArray();
+var rightSpikes = generateSpikeArray();
 
 function changePos() {
+
 	// update score header
 	var scoreheader = "Score: " + score;
 	$("#score").text(scoreheader);	
@@ -81,12 +85,44 @@ function changePos() {
 	if (xPos < 0) {
 		score++;
 		xVel *= -1;
+		rightSpikes = generateSpikeArray();
+		updateRightSpikes();
 	}
 
 	if (xPos >= (width - Woffset)) {
 		score++;
 		xVel *= -1;
 		xPos = (width - Woffset);
+		leftSpikes = generateSpikeArray();
+		updateLeftSpikes();
+	}
+}
+
+function updateRightSpikes() {
+	console.log("updating right spikes");
+	for (var i = 0; i < 10; i++) {
+		var spikeName = '#rightFrog' + i;
+		console.log(spikeName);
+		if (rightSpikes[i] == 1) {
+			$(spikeName).css('background-color', 'blue');
+		}
+		else {
+			$(spikeName).css('background-color', 'transparent');
+		}			
+	}
+}
+
+function updateLeftSpikes() {
+	console.log("updating left spikes");
+	for (var i = 0; i < 10; i++) {
+		var spikeName = '#leftFrog' + i;
+		console.log(spikeName);
+		if (leftSpikes[i] == 1) {
+			$(spikeName).css('background-color', 'blue');
+		}
+		else {
+			$(spikeName).css('background-color', 'transparent');
+		}			
 	}
 }
 
@@ -106,12 +142,34 @@ function pauseResume() {
 	}
 }
 
+function generateSpikeArray() {
+	// get number of spikes
+	var numSpikes = Math.floor((Math.random() * 4) + 1);
+
+	// assign each spike a random location
+	var spikeArr = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+
+	for (var i = 0; i < numSpikes; i++) {
+		var foundASpot = 0;
+		while (foundASpot == 0) {
+			var spikeIndex = Math.floor((Math.random() * 10) + 1);
+
+			// no spike there yet, add one to that spot
+			if (spikeArr[spikeIndex] == 0) {
+				spikeArr[spikeIndex] = 1;
+				foundASpot = 1;
+			}
+		}
+	}
+	console.log(spikeArr);
+	return spikeArr;
+}
 
 $(document).ready(function(){
 		console.log("fake stuff");
 		$("#big").click(function(){
-			yVel = -20; 
-			});
+			yVel = -15; 
+		});
 });
 
 
