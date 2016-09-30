@@ -20,11 +20,16 @@ else name = false;
 
 var xPos = 20;
 var yPos = 0;
+
+
 // generate original spikes
 var leftSpikes = generateSpikeArray();
 var rightSpikes = generateSpikeArray();
+updateLeftSpikes();
+updateRightSpikes();
 
 function changePos() {
+
 
 	// update score header
 	var scoreheader = "Score: " + score;
@@ -98,16 +103,27 @@ function changePos() {
 	}
 	
 	if (xPos <= 50) {
-		collisionDetect(yPos);
+		updateLeftSpikes();
+		collisionDetectLeft(yPos);
+	}
+
+	if (xPos >= (width - Woffset - 50)) {
+		updateRightSpikes();
+		collisionDetectRight(yPos);
 	}
 
 }
 
+function handleCollision() {
+	console.log("COLLISION");
+	score = 0;
+}
+
 function updateRightSpikes() {
-	console.log("updating right spikes");
+	//console.log("updating right spikes");
 	for (var i = 0; i < 10; i++) {
 		var spikeName = '#rightFrog' + i;
-		console.log(spikeName);
+		//console.log(spikeName);
 		if (rightSpikes[i] == 1) {
 			$(spikeName).css('background-color', 'blue');
 		}
@@ -117,20 +133,31 @@ function updateRightSpikes() {
 	}
 }
 
-function collisionDetect(yPos) {
+function collisionDetectRight(yPos) {
 	// check each spike
 	for (var i=0; i<10; i++) {
-		if (Math.abs(yPos-(50*i)) <= 50 && (leftSpikes[i] == 1)) {
-			console.log("collision with ", i);
+		if (Math.abs(yPos-(50*i + 25)) <= 25 && (rightSpikes[i] == 1)) {
+			handleCollision();
+			//console.log("right collision with ", i);
+		}	
+	}	
+}
+
+function collisionDetectLeft(yPos) {
+	// check each spike
+	for (var i=0; i<10; i++) {
+		if (Math.abs(yPos-(50*i + 25)) <= 25 && (leftSpikes[i] == 1)) {
+			handleCollision();
+			//console.log("left collision with ", i);
 		}	
 	}	
 }
 
 function updateLeftSpikes() {
-	console.log("updating left spikes");
+	//console.log("updating left spikes");
 	for (var i = 0; i < 10; i++) {
 		var spikeName = '#leftFrog' + i;
-		console.log(spikeName);
+	//	console.log(spikeName);
 		if (leftSpikes[i] == 1) {
 			$(spikeName).css('background-color', 'blue');
 		}
@@ -175,7 +202,7 @@ function generateSpikeArray() {
 			}
 		}
 	}
-	console.log(spikeArr);
+	//console.log(spikeArr);
 	return spikeArr;
 }
 
