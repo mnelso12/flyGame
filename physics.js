@@ -4,7 +4,7 @@ console.log("entering physics");
 var highScore = 0;
 var score = 0;
 
-var xVel = 6;
+var xVel = 8;
 var yVel = 2;	
 
 var delay = 30;
@@ -17,7 +17,7 @@ var name = navigator.appName;
 
 var numFrogs = 10;
 var frogWidth = 25;
-var frogHeight = 50;
+var frogHeight = 100;
 var frogAlmostWidth = 25;
 
 var prevPositions = [];
@@ -30,11 +30,36 @@ var yPos = 0;
 
 
 // generate original spikes
-var leftSpikes = generateSpikeArray();
+var leftSpikes = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]; // because starting on left
 var rightSpikes = generateSpikeArray();
 updateLeftSpikes();
 updateRightSpikes();
 
+
+function startOver() {
+	// make score and high score appear
+	$("#score").css('visibility', 'visible');
+	$("#highScore").css('visibility', 'visible');
+	
+	// get rid of death menu	
+	$("#deathMenu").css('visibility', 'hidden');
+
+	var xVel = 6;
+	var yVel = 2;	
+	score = 0;
+	xPos = 0; 
+	yPos = 300;
+	
+	leftSpikes = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]; // because starting on left
+	updateLeftSpikes();
+
+	var rightSpikes = generateSpikeArray();
+	updateRightSpikes();
+	
+	// actually resume
+	interval = setInterval('changePos()',delay);
+	pause = true;
+}
 
 
 
@@ -83,7 +108,7 @@ function changePos() {
 	// change y direction
 	if (yPos < 0) {
 		yVel *= -1;
-		score = 0;
+		//score = 0;
 	}
 
 	if (yPos >= (height - Hoffset)) {
@@ -144,17 +169,18 @@ function changePos() {
 	handleTrail(xPos, yPos);
 }
 
+
 function handleTrail(xPos, yPos) {
 	// keep track of prev positions
 	prevPositions.push([xPos, yPos]);		
-	console.log(prevPositions);
+	//console.log(prevPositions);
 	if (prevPositions.length >= 50) {
 		prevPositions.shift(); // aka pop first element
 	}
 
 	for (var i=0; i<prevPositions.length/3; i++) {
 		var trailName = 'trail' + i;
-		console.log("trailName", trailName);
+		//console.log("trailName", trailName);
 		document.getElementById(trailName).style.top = prevPositions[i*3][1] + window.pageYOffset;
 		document.getElementById(trailName).style.left = prevPositions[i*3][0] + window.pageXOffset;
 	}
@@ -163,12 +189,25 @@ function handleTrail(xPos, yPos) {
 
 function handleCollision() {
 	console.log("COLLISION");
+	
+	//$("#collision").css('visibility', 'visible');	
+	$("#deathScore").text("Score: " + score);
+	$("#deathMenu").css('visibility', 'visible');
+	$("#score").css('visibility', 'hidden');
+	$("#highScore").css('visibility', 'hidden');
+
+	// pause game
+	clearInterval(interval);
+	pause = false;
+
 	score = 0;
 }
 
 function handleAlmostCollision() {
 	//console.log("almost collision...");
 }
+
+
 
 function closeRightMouths() {
 	for (var i=0; i<numFrogs; i++) {
@@ -183,6 +222,8 @@ function closeLeftMouths() {
 		$(almostSpikeName).css('background-color', 'transparent');
 	}	
 }
+
+
 
 
 function collisionDetectAlmostRight(yPos) {
@@ -216,9 +257,10 @@ function collisionDetectAlmostLeft(yPos) {
 function collisionDetectRight(yPos) {
 	// check each spike
 	for (var i=0; i<numFrogs; i++) {
-		if (Math.abs(yPos-(frogHeight*i + frogHeight/2)) <= frogHeight/2 && (rightSpikes[i] == 1)) {
+		console.log("yPos:", yPos, "compared to ", frogHeight*i + frogHeight/2);
+		if ((Math.abs(yPos-(frogHeight*i + frogHeight/2)) <= frogHeight/2) && (rightSpikes[i] == 1)) {
 			handleCollision();
-			//console.log("right collision with ", i);
+			console.log("right collision with ", i);
 		}	
 	}	
 }
@@ -226,9 +268,10 @@ function collisionDetectRight(yPos) {
 function collisionDetectLeft(yPos) {
 	// check each spike
 	for (var i=0; i<numFrogs; i++) {
-		if (Math.abs(yPos-(frogHeight*i + frogHeight/2)) <= frogHeight/2 && (leftSpikes[i] == 1)) {
+		console.log("yPos:", yPos, "compared to ", ((frogHeight*i + frogHeight/2)));
+		if ((Math.abs(yPos-(frogHeight*i + frogHeight/2)) <= frogHeight/2) && (leftSpikes[i] == 1)) {
 			handleCollision();
-			//console.log("left collision with ", i);
+			console.log("left collision with ", i);
 		}	
 	}	
 }
@@ -301,6 +344,12 @@ function generateSpikeArray() {
 
 $(document).ready(function(){
 		console.log("fake stuff");
+
+		// start over
+		$("#replay").click(function() {	
+			startOver();
+			console.log('started over');
+		});
 
 		// jump
 		$("#big").click(function(){
