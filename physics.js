@@ -127,6 +127,7 @@ function changePos() {
 	if (xPos < 0) {
 		score++;
 		xVel *= -1;
+		$('#fly').attr("src", "fly-right.png"); 
 		rightSpikes = generateSpikeArray();
 		updateRightSpikes();
 	}
@@ -134,6 +135,7 @@ function changePos() {
 	if (xPos >= (width - Woffset)) {
 		score++;
 		xVel *= -1;
+		$('#fly').attr("src", "fly-left.png"); 
 		xPos = (width - Woffset);
 		leftSpikes = generateSpikeArray();
 		updateLeftSpikes();
