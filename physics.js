@@ -4,8 +4,8 @@ console.log("entering physics");
 var highScore = 0;
 var score = 0;
 
-var xVel = 9;
-var yVel = 3;	
+var xVel = 6;
+var yVel = 2;	
 
 var delay = 30;
 var height = 0;
@@ -14,6 +14,13 @@ var Woffset = 0;
 var pause = true;
 var interval;
 var name = navigator.appName;
+
+var numFrogs = 10;
+var frogWidth = 25;
+var frogHeight = 50;
+var frogAlmostWidth = 25;
+
+var prevPositions = [];
 
 if(name == "Microsoft Internet Explorer") name = true;
 else name = false;
@@ -28,8 +35,10 @@ var rightSpikes = generateSpikeArray();
 updateLeftSpikes();
 updateRightSpikes();
 
-function changePos() {
 
+
+
+function changePos() {
 
 	// update score header
 	var scoreheader = "Score: " + score;
@@ -78,9 +87,12 @@ function changePos() {
 	}
 
 	if (yPos >= (height - Hoffset)) {
+		// friction
+		yVel *= .75;
+	
 		yVel *= -1;
 		yPos = (height - Hoffset);
-		score = 0;
+		//score = 0;
 	}
 
 	// move in x direction
@@ -110,7 +122,7 @@ function changePos() {
 		closeLeftMouths();
 	}
 
-	if (xPos >= (width - Woffset - 125)) {
+	if (xPos >= (width - Woffset - (frogWidth+frogAlmostWidth))) {
 		updateRightSpikes();
 		collisionDetectAlmostRight(yPos);
 	}
@@ -123,12 +135,31 @@ function changePos() {
 		collisionDetectLeft(yPos);
 	}
 
-	if (xPos >= (width - Woffset - 25)) {
+	if (xPos >= (width - Woffset - frogWidth)) {
 		updateRightSpikes();
 		collisionDetectRight(yPos);
 	}
+	
 
+	handleTrail(xPos, yPos);
 }
+
+function handleTrail(xPos, yPos) {
+	// keep track of prev positions
+	prevPositions.push([xPos, yPos]);		
+	console.log(prevPositions);
+	if (prevPositions.length >= 50) {
+		prevPositions.shift(); // aka pop first element
+	}
+
+	for (var i=0; i<prevPositions.length/3; i++) {
+		var trailName = 'trail' + i;
+		console.log("trailName", trailName);
+		document.getElementById(trailName).style.top = prevPositions[i*3][1] + window.pageYOffset;
+		document.getElementById(trailName).style.left = prevPositions[i*3][0] + window.pageXOffset;
+	}
+}
+
 
 function handleCollision() {
 	console.log("COLLISION");
@@ -136,18 +167,18 @@ function handleCollision() {
 }
 
 function handleAlmostCollision() {
-	console.log("almost collision...");
+	//console.log("almost collision...");
 }
 
 function closeRightMouths() {
-	for (var i=0; i<10; i++) {
+	for (var i=0; i<numFrogs; i++) {
 		var almostSpikeName = '#rightFrogAlmost' + i;
 		$(almostSpikeName).css('background-color', 'transparent');
 	}	
 }
 
 function closeLeftMouths() {
-	for (var i=0; i<10; i++) {
+	for (var i=0; i<numFrogs; i++) {
 		var almostSpikeName = '#leftFrogAlmost' + i;
 		$(almostSpikeName).css('background-color', 'transparent');
 	}	
@@ -156,9 +187,9 @@ function closeLeftMouths() {
 
 function collisionDetectAlmostRight(yPos) {
 	// check each spike
-	for (var i=0; i<10; i++) {
+	for (var i=0; i<numFrogs; i++) {
 		var almostSpikeName = '#rightFrogAlmost' + i;
-		if (Math.abs(yPos-(50*i + 25)) <= 150 && (rightSpikes[i] == 1)) {
+		if (Math.abs(yPos-(frogHeight*i + frogHeight/2)) <= 150 && (rightSpikes[i] == 1)) {
 			handleAlmostCollision();
 			$(almostSpikeName).css('background-color', 'red');
 		}	
@@ -170,9 +201,9 @@ function collisionDetectAlmostRight(yPos) {
 
 function collisionDetectAlmostLeft(yPos) {
 	// check each spike
-	for (var i=0; i<10; i++) {
+	for (var i=0; i<numFrogs; i++) {
 		var almostSpikeName = '#leftFrogAlmost' + i;
-		if (Math.abs(yPos-(50*i + 25)) <= 150 && (leftSpikes[i] == 1)) {
+		if (Math.abs(yPos-(frogHeight*i + frogHeight/2)) <= 150 && (leftSpikes[i] == 1)) {
 			handleAlmostCollision();
 			$(almostSpikeName).css('background-color', 'red');
 		}	
@@ -184,8 +215,8 @@ function collisionDetectAlmostLeft(yPos) {
 
 function collisionDetectRight(yPos) {
 	// check each spike
-	for (var i=0; i<10; i++) {
-		if (Math.abs(yPos-(50*i + 25)) <= 25 && (rightSpikes[i] == 1)) {
+	for (var i=0; i<numFrogs; i++) {
+		if (Math.abs(yPos-(frogHeight*i + frogHeight/2)) <= frogHeight/2 && (rightSpikes[i] == 1)) {
 			handleCollision();
 			//console.log("right collision with ", i);
 		}	
@@ -194,8 +225,8 @@ function collisionDetectRight(yPos) {
 
 function collisionDetectLeft(yPos) {
 	// check each spike
-	for (var i=0; i<10; i++) {
-		if (Math.abs(yPos-(50*i + 25)) <= 25 && (leftSpikes[i] == 1)) {
+	for (var i=0; i<numFrogs; i++) {
+		if (Math.abs(yPos-(frogHeight*i + frogHeight/2)) <= frogHeight/2 && (leftSpikes[i] == 1)) {
 			handleCollision();
 			//console.log("left collision with ", i);
 		}	
@@ -204,7 +235,7 @@ function collisionDetectLeft(yPos) {
 
 function updateRightSpikes() {
 	//console.log("updating right spikes");
-	for (var i = 0; i < 10; i++) {
+	for (var i = 0; i < numFrogs; i++) {
 		var spikeName = '#rightFrog' + i;
 		//console.log(spikeName);
 		if (rightSpikes[i] == 1) {
@@ -218,7 +249,7 @@ function updateRightSpikes() {
 
 function updateLeftSpikes() {
 	//console.log("updating left spikes");
-	for (var i = 0; i < 10; i++) {
+	for (var i = 0; i < numFrogs; i++) {
 		var spikeName = '#leftFrog' + i;
 	//	console.log(spikeName);
 		if (leftSpikes[i] == 1) {
@@ -256,7 +287,7 @@ function generateSpikeArray() {
 	for (var i = 0; i < numSpikes; i++) {
 		var foundASpot = 0;
 		while (foundASpot == 0) {
-			var spikeIndex = Math.floor((Math.random() * 10) + 1);
+			var spikeIndex = Math.floor((Math.random() * numFrogs) + 1);
 
 			// no spike there yet, add one to that spot
 			if (spikeArr[spikeIndex] == 0) {
@@ -265,12 +296,13 @@ function generateSpikeArray() {
 			}
 		}
 	}
-	//console.log(spikeArr);
 	return spikeArr;
 }
 
 $(document).ready(function(){
 		console.log("fake stuff");
+
+		// jump
 		$("#big").click(function(){
 			yVel = -15; 
 		});
