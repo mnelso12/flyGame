@@ -55,7 +55,7 @@ function startOver() {
 
 	var rightSpikes = generateSpikeArray();
 	updateRightSpikes();
-	
+
 	// actually resume
 	interval = setInterval('changePos()',delay);
 	pause = true;
@@ -66,7 +66,7 @@ function startOver() {
 function changePos() {
 
 	// update score header
-	var scoreheader = "Score: " + score;
+	var scoreheader = score;
 	$("#score").text(scoreheader);	
 
 	if (score >= highScore) {
