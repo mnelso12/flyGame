@@ -284,7 +284,7 @@ function updateRightSpikes() {
 		var spikeName = '#rightFrog' + i;
 		//console.log(spikeName);
 		if (rightSpikes[i] == 1) {
-			$(spikeName).css('background-color', 'blue');
+			$(spikeName).css('background-color', '#244224');
 		}
 		else {
 			$(spikeName).css('background-color', 'transparent');
@@ -298,7 +298,7 @@ function updateLeftSpikes() {
 		var spikeName = '#leftFrog' + i;
 	//	console.log(spikeName);
 		if (leftSpikes[i] == 1) {
-			$(spikeName).css('background-color', 'blue');
+			$(spikeName).css('background-color', '#244224');
 		}
 		else {
 			$(spikeName).css('background-color', 'transparent');
@@ -355,7 +355,7 @@ $(document).ready(function(){
 
 		// jump
 		$("#big").click(function(){
-			yVel = -15; 
+			yVel = -20; 
 		});
 });
 

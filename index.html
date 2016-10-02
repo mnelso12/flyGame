@@ -1,28 +1,52 @@
 <html>
 <head>
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
 	<link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet">
 	<title>flyGame</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 </head>
 
-<body style="font-family: 'Titillium Web', sans-serif; background-color: #ccffee; height: 1024px; width: 768px;
+
+
+
+
+<body style="font-family: 'Titillium Web', sans-serif; background-color: cadetblue;
 -webkit-touch-callout: none;
 -webkit-user-select: none;
 -khtml-user-select: none;
 -moz-user-select: none;
 -ms-user-select: none;
 user-select: none;">
-	<div id="big" style="width: 100%; height: 100%;">
+
+
+	<div id="big" style="background-color: transparent; width: 100%; height: 100%;">
 		<h2 style="margin-top: 20px; margin-bottom: 0px; text-align: center; font-size: 80px;" id="highScore"></h2>
-		<div style="position: absolute; left: 234px; top: 300px; height: 300px; width: 300px; background-color: white; border-radius: 100px;">
+		<div style="
+			margin: 0;
+    			position: absolute;
+    			top: 50%;
+    			left: 50%;
+    			transform: translate(-50%, -50%);
+			height: 300px; width: 300px; background-color: white; border-radius: 100px;">
 			<h1 style="padding: 0; margin: 0; height: 300px; text-align: center; font-size: 200px;" id="score"></h1>
 		</div>
 
-		<div id="deathMenu" style="visibility: hidden; position: absolute; top: 100px; left: 100px; height: 824px; width: 568px; background-color: purple; border-radius: 50px; opacity: .5; border-color: black; border-style: solid; border-width: 7px;">
+		<div id="deathMenu" style="visibility: hidden; 
+			margin: 0;
+    			position: absolute;
+    			top: 50%;
+    			left: 50%;
+    			transform: translate(-50%, -50%);
+			background-color: darkslategray;
+			height: 90%;
+			width: 67%;			
+ border-radius: 50px; opacity: .7; border-color: black; border-style: solid; border-width: 7px;">
+<!--		<div id="deathMenu" style="visibility: hidden; align: center; margin: 100px; iackground-color: darkslategray; border-radius: 50px; opacity: .7; border-color: black; border-style: solid; border-width: 7px;"> -->
 			<h1 style="margin-top: 40px; margin-bottom: 40px; text-align: center; font-size: 80px;" id="collision">GAME OVER</h1>
 			<div style="margin-top: 0px; width: 100%; height: 7px; color: black; background-color: black;"></div>
 			<div id="deathScore" style="font-size: 100px; color: black; text-align: center; align: center;">Score: </div>
 			<div id="replay" style="font-size: 100px; color: black; background-color: lightblue; align: center; text-align: center;">Replay</div>
+			<div id="about" style="font-size: 100px; color: black; align: center; text-align: center;">About</div>
 		</div>
 
 
@@ -34,21 +58,21 @@ user-select: none;">
 			</div>
 	</div>
 
-	<div id="trail0" style="border-radius: 10px; position: absolute; height: 10px; width: 10px; background-color: white;"></div>
-	<div id="trail1" style="border-radius: 10px; position: absolute; height: 10px; width: 10px; background-color: ebe8fc;"></div>
-	<div id="trail2" style="border-radius: 10px; position: absolute; height: 10px; width: 10px; background-color: ebe8fc;"></div>
-	<div id="trail3" style="border-radius: 10px; position: absolute; height: 10px; width: 10px; background-color: ebe8fc;"></div>
-	<div id="trail4" style="border-radius: 10px; position: absolute; height: 10px; width: 10px; background-color: d7d1fa;"></div>
-	<div id="trail5" style="border-radius: 10px; position: absolute; height: 10px; width: 10px; background-color: d7d1fa;"></div>
-	<div id="trail6" style="border-radius: 10px; position: absolute; height: 10px; width: 10px; background-color: d7d1fa;"></div>
-	<div id="trail7" style="border-radius: 10px; position: absolute; height: 10px; width: 10px; background-color: c3baf7;"></div>
-	<div id="trail8" style="border-radius: 10px; position: absolute; height: 10px; width: 10px; background-color: c3baf7;"></div>
-	<div id="trail9" style="border-radius: 10px; position: absolute; height: 10px; width: 10px; background-color: c3baf7;"></div>
-	<div id="trail10" style="border-radius: 10px; position: absolute; height: 10px; width: 10px; background-color: 9c8cf2;"></div>
-	<div id="trail11" style="border-radius: 10px; position: absolute; height: 10px; width: 10px; background-color: 9c8cf2;"></div>
-	<div id="trail12" style="border-radius: 10px; position: absolute; height: 10px; width: 10px; background-color: 9c8cf2;"></div>
-	<div id="trail13" style="border-radius: 10px; position: absolute; height: 10px; width: 10px; background-color: 8875f0;"></div>
-	<div id="trail14" style="border-radius: 10px; position: absolute; height: 10px; width: 10px; background-color: 8875f0;"></div>
+	<div id="trail0" style="border-radius: 10px; position: absolute; height: 2px; width: 2px; background-color: white;"></div>
+	<div id="trail1" style="border-radius: 10px; position: absolute; height: 3px; width: 3px; background-color: ebe8fc;"></div>
+	<div id="trail2" style="border-radius: 10px; position: absolute; height: 3px; width: 3px; background-color: ebe8fc;"></div>
+	<div id="trail3" style="border-radius: 10px; position: absolute; height: 4px; width: 4px; background-color: ebe8fc;"></div>
+	<div id="trail4" style="border-radius: 10px; position: absolute; height: 4px; width: 4px; background-color: d7d1fa;"></div>
+	<div id="trail5" style="border-radius: 10px; position: absolute; height: 5px; width: 5px; background-color: d7d1fa;"></div>
+	<div id="trail6" style="border-radius: 10px; position: absolute; height: 5px; width: 5px; background-color: d7d1fa;"></div>
+	<div id="trail7" style="border-radius: 10px; position: absolute; height: 6px; width: 6px; background-color: c3baf7;"></div>
+	<div id="trail8" style="border-radius: 10px; position: absolute; height: 6px; width: 6px; background-color: c3baf7;"></div>
+	<div id="trail9" style="border-radius: 10px; position: absolute; height: 7px; width: 7px; background-color: c3baf7;"></div>
+	<div id="trail10" style="border-radius: 10px; position: absolute; height: 7px; width: 7px; background-color: 9c8cf2;"></div>
+	<div id="trail11" style="border-radius: 10px; position: absolute; height: 8px; width: 8px; background-color: 9c8cf2;"></div>
+	<div id="trail12" style="border-radius: 10px; position: absolute; height: 8px; width: 8px; background-color: 9c8cf2;"></div>
+	<div id="trail13" style="border-radius: 10px; position: absolute; height: 9px; width: 9px; background-color: 8875f0;"></div>
+	<div id="trail14" style="border-radius: 10px; position: absolute; height: 9px; width: 9px; background-color: 8875f0;"></div>
 	<div id="trail15" style="border-radius: 10px; position: absolute; height: 10px; width: 10px; background-color: 7b68ee;"></div>
 	<div id="trail16" style="border-radius: 10px; position: absolute; height: 10px; width: 10px; background-color: 7b68ee;"></div>
 
