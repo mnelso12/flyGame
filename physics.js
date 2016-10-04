@@ -213,15 +213,27 @@ function handleAlmostCollision() {
 
 function closeRightMouths() {
 	for (var i=0; i<numFrogs; i++) {
-		var almostSpikeName = '#rightFrogAlmost' + i;
-		$(almostSpikeName).css('background-color', 'transparent');
+		if (rightSpikes[i] == 1) {
+			var frogName = '#rightFrogImg' + i;
+			$(frogName).css('background-image', 'url(frogTransClosed-right.png)');
+		}
+		else {
+			var frogName = '#rightFrogImg' + i;
+			$(frogName).css('background-image', 'url()');
+		}
 	}	
 }
 
 function closeLeftMouths() {
 	for (var i=0; i<numFrogs; i++) {
-		var almostSpikeName = '#leftFrogAlmost' + i;
-		$(almostSpikeName).css('background-color', 'transparent');
+		if (leftSpikes[i] == 1) {
+			var frogName = '#leftFrogImg' + i;
+			$(frogName).css('background-image', 'url(frogTransClosed-left.png)');
+		}
+		else {
+			var frogName = '#leftFrogImg' + i;
+			$(frogName).css('background-image', 'url()');
+		}
 	}	
 }
 
@@ -251,8 +263,13 @@ function collisionDetectAlmostRight(yPos) {
 			$(frogImg).css('background-repeat', 'no-repeat');
 			handleAlmostCollision();
 		}	
-		else {
+		else if (rightSpikes[i] == 1){
 			$(frogImg).css('background-image', 'url(./frogTransClosed-right.png)');
+			$(frogImg).css('background-size', 'contain');
+			$(frogImg).css('background-repeat', 'no-repeat');
+		}	
+		else {
+			$(frogImg).css('background-image', 'url()');
 		}	
 	}
 }
@@ -260,20 +277,20 @@ function collisionDetectAlmostRight(yPos) {
 function collisionDetectAlmostLeft(yPos) {
 	// check each spike
 	for (var i=0; i<numFrogs; i++) {
-		//var almostSpikeName = '#leftFrogAlmost' + i;
-		//var almostSpikeName = '#leftFrog' + i;
 		var frogImg = '#leftFrogImg' + i;
 		if (Math.abs(yPos-(frogHeight*i + frogHeight/2)) <= 150 && (leftSpikes[i] == 1)) {
 			$(frogImg).css('background-image', 'url(./frogTransOpen3-left.png)');
 			$(frogImg).css('background-size', 'contain');
 			$(frogImg).css('background-repeat', 'no-repeat');
 			handleAlmostCollision();
-			//$(almostSpikeName).css('background-color', 'red');
-			//$(almostSpikeName).css('background-image', 'url(./frogTransOpen3.png)');
+		}	
+		else if (leftSpikes[i] == 1){
+			$(frogImg).css('background-image', 'url(./frogTransClosed-left.png)');
+			$(frogImg).css('background-size', 'contain');
+			$(frogImg).css('background-repeat', 'no-repeat');
 		}	
 		else {
-			//$(almostSpikeName).css('background-color', 'transparent');
-			$(frogImg).css('background-image', 'url(./frogTransClosed-left.png)');
+			$(frogImg).css('background-image', 'url()');
 		}	
 	}	
 }
@@ -304,11 +321,15 @@ function updateRightSpikes() {
 	//console.log("updating right spikes");
 	for (var i = 0; i < numFrogs; i++) {
 		var spikeName = '#rightFrog' + i;
-		//console.log(spikeName);
+		var frogImg = '#rightFrogImg' + i;
 		if (rightSpikes[i] == 1) {
+			$(frogImg).css('background-image', 'url(./frogTransClosed-right.png)');
+			$(frogImg).css('background-size', 'contain');
+			$(frogImg).css('background-repeat', 'no-repeat');
 			$(spikeName).css('background-color', '#244224');
 		}
 		else {
+			$(frogImg).css('background-image', 'url()');
 			$(spikeName).css('background-color', 'transparent');
 		}			
 	}
@@ -318,11 +339,15 @@ function updateLeftSpikes() {
 	//console.log("updating left spikes");
 	for (var i = 0; i < numFrogs; i++) {
 		var spikeName = '#leftFrog' + i;
-	//	console.log(spikeName);
+		var frogImg = '#leftFrogImg' + i;
 		if (leftSpikes[i] == 1) {
+			$(frogImg).css('background-image', 'url(./frogTransClosed-left.png)');
+			$(frogImg).css('background-size', 'contain');
+			$(frogImg).css('background-repeat', 'no-repeat');
 			$(spikeName).css('background-color', '#244224');
 		}
 		else {
+			$(frogImg).css('background-image', 'url()');
 			$(spikeName).css('background-color', 'transparent');
 		}			
 	}
