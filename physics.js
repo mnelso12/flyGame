@@ -149,7 +149,9 @@ function changePos() {
 		closeLeftMouths();
 	}
 
-	if (xPos >= (width - Woffset - (frogWidth+frogAlmostWidth))) {
+	if (xPos >= (width - Woffset - (frogWidth+2*frogAlmostWidth))) {
+		console.log("almost right val:", width - Woffset - (frogWidth+frogAlmostWidth));
+		console.log("screen width: ", width);
 		updateRightSpikes();
 		collisionDetectAlmostRight(yPos);
 	}
@@ -215,6 +217,7 @@ function closeRightMouths() {
 	for (var i=0; i<numFrogs; i++) {
 		if (rightSpikes[i] == 1) {
 			var frogName = '#rightFrogImg' + i;
+			$(frogName).css('width', '140px');
 			$(frogName).css('background-image', 'url(frogTransClosed-right.png)');
 		}
 		else {
@@ -258,12 +261,14 @@ function collisionDetectAlmostRight(yPos) {
 	for (var i=0; i<numFrogs; i++) {
 		var frogImg = '#rightFrogImg' + i;
 		if (Math.abs(yPos-(frogHeight*i + frogHeight/2)) <= 150 && (rightSpikes[i] == 1)) {
+			$(frogImg).css('width', '225px');
 			$(frogImg).css('background-image', 'url(./frogTransOpen3-right.png)');
 			$(frogImg).css('background-size', 'contain');
 			$(frogImg).css('background-repeat', 'no-repeat');
 			handleAlmostCollision();
 		}	
 		else if (rightSpikes[i] == 1){
+			$(frogImg).css('width', '140px');
 			$(frogImg).css('background-image', 'url(./frogTransClosed-right.png)');
 			$(frogImg).css('background-size', 'contain');
 			$(frogImg).css('background-repeat', 'no-repeat');
@@ -323,6 +328,7 @@ function updateRightSpikes() {
 		var spikeName = '#rightFrog' + i;
 		var frogImg = '#rightFrogImg' + i;
 		if (rightSpikes[i] == 1) {
+			$(frogImg).css('width', '140px');
 			$(frogImg).css('background-image', 'url(./frogTransClosed-right.png)');
 			$(frogImg).css('background-size', 'contain');
 			$(frogImg).css('background-repeat', 'no-repeat');
