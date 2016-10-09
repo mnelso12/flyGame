@@ -43,6 +43,9 @@ function startOver() {
 	
 	// get rid of death menu	
 	$("#deathMenu").css('visibility', 'hidden');
+	
+	// resurrect fly
+	$("#fly").css('visibility', 'visible');
 
 	var xVel = 6;
 	var yVel = 2;	
@@ -306,6 +309,9 @@ function collisionDetectRight(yPos) {
 		console.log("yPos:", yPos, "compared to ", frogHeight*i + frogHeight/2);
 		if ((Math.abs(yPos-(frogHeight*i + frogHeight/2)) <= frogHeight/2) && (rightSpikes[i] == 1)) {
 			handleCollision();
+			var frogImg = '#rightFrogImg' + i;
+			$("#fly").css('visibility', 'hidden');
+			$(frogImg).css('background-image', 'url(./flyEatenRight.png)');
 			console.log("right collision with ", i);
 		}	
 	}	
@@ -317,6 +323,9 @@ function collisionDetectLeft(yPos) {
 		console.log("yPos:", yPos, "compared to ", ((frogHeight*i + frogHeight/2)));
 		if ((Math.abs(yPos-(frogHeight*i + frogHeight/2)) <= frogHeight/2) && (leftSpikes[i] == 1)) {
 			handleCollision();
+			var frogImg = '#leftFrogImg' + i;
+			$("#fly").css('visibility', 'hidden');
+			$(frogImg).css('background-image', 'url(./flyEatenLeft.png)');
 			console.log("left collision with ", i);
 		}	
 	}	
