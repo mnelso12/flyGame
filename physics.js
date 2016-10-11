@@ -341,7 +341,8 @@ function updateRightSpikes() {
 			$(frogImg).css('background-image', 'url(./frogTransClosed-right.png)');
 			$(frogImg).css('background-size', 'contain');
 			$(frogImg).css('background-repeat', 'no-repeat');
-			$(spikeName).css('background-color', '#244224');
+			//$(spikeName).css('background-color', '#244224');
+			$(spikeName).css('background-color', 'transparent');
 		}
 		else {
 			$(frogImg).css('background-image', 'url()');
@@ -359,7 +360,8 @@ function updateLeftSpikes() {
 			$(frogImg).css('background-image', 'url(./frogTransClosed-left.png)');
 			$(frogImg).css('background-size', 'contain');
 			$(frogImg).css('background-repeat', 'no-repeat');
-			$(spikeName).css('background-color', '#244224');
+			//$(spikeName).css('background-color', '#244224');
+			$(spikeName).css('background-color', 'transparent');
 		}
 		else {
 			$(frogImg).css('background-image', 'url()');
