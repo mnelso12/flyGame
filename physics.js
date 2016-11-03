@@ -417,6 +417,18 @@ $(document).ready(function(){
 			console.log('started over');
 		});
 
+		$("#about").click(function() {	
+			$("#profile").css("visibility", "visible");	
+			/*
+			$("#menuContent").css("height", "0px");	
+			$("#deathScore").css("height", "0px");	
+			$("#replay").css("height", "0px");	
+			$("#about").css("height", "0px");	
+			*/
+
+			$("#menuContent").css("visibility", "hidden");	
+		});
+
 		// jump
 		$("#big").click(function(){
 			yVel = -20; 
