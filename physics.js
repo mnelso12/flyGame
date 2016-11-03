@@ -43,6 +43,7 @@ function startOver() {
 	
 	// get rid of death menu	
 	$("#deathMenu").css('visibility', 'hidden');
+	$("#profile").css('visibility', 'hidden');
 	
 	// resurrect fly
 	$("#fly").css('visibility', 'visible');
@@ -200,6 +201,7 @@ function handleCollision() {
 	//$("#collision").css('visibility', 'visible');	
 	$("#deathScore").text("Score: " + score);
 	$("#deathMenu").css('visibility', 'visible');
+	$("#menuContent").css("visibility", 'visible');	
 	$("#score").css('visibility', 'hidden');
 	$("#highScore").css('visibility', 'hidden');
 
@@ -414,19 +416,18 @@ $(document).ready(function(){
 		// start over
 		$("#replay").click(function() {	
 			startOver();
+			$("#menuContent").css("visibility", "hidden");	
 			console.log('started over');
 		});
 
 		$("#about").click(function() {	
 			$("#profile").css("visibility", "visible");	
-			/*
-			$("#menuContent").css("height", "0px");	
-			$("#deathScore").css("height", "0px");	
-			$("#replay").css("height", "0px");	
-			$("#about").css("height", "0px");	
-			*/
-
 			$("#menuContent").css("visibility", "hidden");	
+		});
+		
+		$("#backButton").click(function() {	
+			$("#profile").css("visibility", "hidden");	
+			$("#menuContent").css("visibility", "visible");	
 		});
 
 		// jump
