@@ -203,6 +203,7 @@ function handleCollision() {
 	$("#deathMenu").css('visibility', 'visible');
 	$("#menuContent").css("visibility", 'visible');	
 	$("#score").css('visibility', 'hidden');
+	$("#scoreBox").css('visibility', 'hidden');
 	$("#highScore").css('visibility', 'hidden');
 
 	// pause game
@@ -417,6 +418,7 @@ $(document).ready(function(){
 		$("#replay").click(function() {	
 			startOver();
 			$("#menuContent").css("visibility", "hidden");	
+			$("#scoreBox").css('visibility', 'visible');
 			console.log('started over');
 		});
 
