@@ -1,136 +1,133 @@
 <html>
-<head>
-	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
-	<!--
-	<link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet">
-	-->
-	<link href="https://fonts.googleapis.com/css?family=Bitter" rel="stylesheet">
-	<title>flyGame</title>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-</head>
+	<head>
+		<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+		<link href="https://fonts.googleapis.com/css?family=Bitter" rel="stylesheet">
+		<title>flyGame</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	</head>
 
 
 
 
 
-<body style="
-/*font-family: 'Titillium Web', sans-serif;*/
-font-family: 'Bitter', serif;
-margin: 0px 0px 0px 0px;
-padding: 0px 0px 0px 0px;
-background-image: url('frogBackgroundBigger5.png');
-background-size: cover; 
-background-repeat:   no-repeat;
-background-position: center center;
--webkit-touch-callout: none;
--webkit-user-select: none;
--khtml-user-select: none;
--moz-user-select: none;
--ms-user-select: none;
-user-select: none;">
+	<body style="
+		/*font-family: 'Titillium Web', sans-serif;*/
+		font-family: 'Bitter', serif;
+		margin: 0px 0px 0px 0px;
+		padding: 0px 0px 0px 0px;
+		background-image: url('frogBackgroundBigger5.png');
+		background-size: cover; 
+		background-repeat:   no-repeat;
+		background-position: center center;
+		-webkit-touch-callout: none;
+		-webkit-user-select: none;
+		-khtml-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;">
 
 
-	<div id="big" style="background-color: transparent; width: 100%; height: 100%;">
-		<h2 style="margin-top: 100px; margin-bottom: 0px; color: white; text-align: center; font-size: 55px;" id="highScore"></h2>
-		<div style="
-			margin: 0;
-    			position: absolute;
-    			top: 50%;
-    			left: 50%;
-    			transform: translate(-50%, -50%);
-			height: 300px;
-			width: 300px; 
-			border-radius: 100px;
-			/*background: rgba(155, 255, 246, 0.3);*/
-			background: rgba(255, 105, 180, 0.4);
-">
-			<h1 style="
-				padding-top: 30px; 
-				margin: 0; 
-				height: 300px; 
-				text-align: center; 
-				color: white;
-				font-size: 200px;" 
-				id="score"></h1>
-		</div>
+		<div id="big" style="background-color: transparent; width: 100%; height: 100%;">
+			<h2 style="margin-top: 50px; margin-bottom: 0px; color: white; text-align: center; font-size: 55px;" id="highScore"></h2>
+			<div style="
+				margin: 0;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				height: 250px;
+				width: 250px; 
+				border-radius: 75px;
+				/*background: rgba(155, 255, 246, 0.3);*/
+				background: rgba(255, 105, 180, 0.4);
+				">
+				<h1 style="
+					padding-top: 40px; 
+					margin: 0; 
+					height: 250px; 
+					text-align: center; 
+					color: white;
+					font-size: 150px;" 
+					id="score"></h1>
+			</div>
 
 
-	<div id="frogAlmostLeft" style="position: absolute; top: 0px; left: 10px; float: left; height: 1000px; width: 25px; background-color: transparent;"> 
-		<div id="leftFrogAlmost0" style="height: 100px; width: 100%; "></div>
-		<div id="leftFrogAlmost1" style="height: 100px; width: 100%; "></div>
-		<div id="leftFrogAlmost2" style="height: 100px; width: 100%; "></div>
-		<div id="leftFrogAlmost3" style="height: 100px; width: 100%; "></div>
-		<div id="leftFrogAlmost4" style="height: 100px; width: 100%; "></div>
-		<div id="leftFrogAlmost5" style="height: 100px; width: 100%; "></div>
-		<div id="leftFrogAlmost6" style="height: 100px; width: 100%; "></div>
-		<div id="leftFrogAlmost7" style="height: 100px; width: 100%; "></div>
-		<div id="leftFrogAlmost8" style="height: 100px; width: 100%; "></div>
-		<div id="leftFrogAlmost9" style="height: 100px; width: 100%; "></div>
-	</div>
-	<div id="frogAlmostRight" style="position: absolute; top: 0px; right: 10px; float: right; height: 1000px; width: 25px; background-color: transparent;"> 
-		<div id="rightFrogAlmost0" style="height: 100px; width: 100%; "></div>
-		<div id="rightFrogAlmost1" style="height: 100px; width: 100%; "></div>
-		<div id="rightFrogAlmost2" style="height: 100px; width: 100%; "></div>
-		<div id="rightFrogAlmost3" style="height: 100px; width: 100%; "></div>
-		<div id="rightFrogAlmost4" style="height: 100px; width: 100%; "></div>
-		<div id="rightFrogAlmost5" style="height: 100px; width: 100%; "></div>
-		<div id="rightFrogAlmost6" style="height: 100px; width: 100%; "></div>
-		<div id="rightFrogAlmost7" style="height: 100px; width: 100%; "></div>
-		<div id="rightFrogAlmost8" style="height: 100px; width: 100%; "></div>
-		<div id="rightFrogAlmost9" style="height: 100px; width: 100%; "></div>
-	</div>
+			<div id="frogAlmostLeft" style="position: absolute; top: 0px; left: 10px; float: left; height: 1000px; width: 25px; background-color: transparent;"> 
+				<div id="leftFrogAlmost0" style="height: 100px; width: 100%; "></div>
+				<div id="leftFrogAlmost1" style="height: 100px; width: 100%; "></div>
+				<div id="leftFrogAlmost2" style="height: 100px; width: 100%; "></div>
+				<div id="leftFrogAlmost3" style="height: 100px; width: 100%; "></div>
+				<div id="leftFrogAlmost4" style="height: 100px; width: 100%; "></div>
+				<div id="leftFrogAlmost5" style="height: 100px; width: 100%; "></div>
+				<div id="leftFrogAlmost6" style="height: 100px; width: 100%; "></div>
+				<div id="leftFrogAlmost7" style="height: 100px; width: 100%; "></div>
+				<div id="leftFrogAlmost8" style="height: 100px; width: 100%; "></div>
+				<div id="leftFrogAlmost9" style="height: 100px; width: 100%; "></div>
+			</div>
+			<div id="frogAlmostRight" style="position: absolute; top: 0px; right: 10px; float: right; height: 1000px; width: 25px; background-color: transparent;"> 
+				<div id="rightFrogAlmost0" style="height: 100px; width: 100%; "></div>
+				<div id="rightFrogAlmost1" style="height: 100px; width: 100%; "></div>
+				<div id="rightFrogAlmost2" style="height: 100px; width: 100%; "></div>
+				<div id="rightFrogAlmost3" style="height: 100px; width: 100%; "></div>
+				<div id="rightFrogAlmost4" style="height: 100px; width: 100%; "></div>
+				<div id="rightFrogAlmost5" style="height: 100px; width: 100%; "></div>
+				<div id="rightFrogAlmost6" style="height: 100px; width: 100%; "></div>
+				<div id="rightFrogAlmost7" style="height: 100px; width: 100%; "></div>
+				<div id="rightFrogAlmost8" style="height: 100px; width: 100%; "></div>
+				<div id="rightFrogAlmost9" style="height: 100px; width: 100%; "></div>
+			</div>
 
-	<div id="frogLeftImg" style="position: absolute; top: 0px; float: left 0px; height: 1000px; width: 10px; background-color: transparent;"> 
-		<div id="leftFrogImg0" style="position: absolute; top: -25px; height: 150px; background-color:transparent; width: 225px; "></div>
-		<div id="leftFrogImg1" style="position: absolute; top: 75px; height: 150px; background-color:transparent; width: 225px; "></div>
-		<div id="leftFrogImg2" style="position: absolute; top: 175px; height: 150px; background-color:transparent; width: 225px; "></div>
-		<div id="leftFrogImg3" style="position: absolute; top: 275px; height: 150px; background-color:transparent; width: 225px; "></div>
-		<div id="leftFrogImg4" style="position: absolute; top: 375px; height: 150px; background-color:transparent; width: 225px; "></div>
-		<div id="leftFrogImg5" style="position: absolute; top: 475px; height: 150px; background-color:transparent; width: 225px; "></div>
-		<div id="leftFrogImg6" style="position: absolute; top: 575px; height: 150px; background-color:transparent; width: 225px; "></div>
-		<div id="leftFrogImg7" style="position: absolute; top: 675px; height: 150px; background-color:transparent; width: 225px; "></div>
-		<div id="leftFrogImg8" style="position: absolute; top: 775px; height: 150px; background-color:transparent; width: 225px; "></div>
-		<div id="leftFrogImg9" style="position: absolute; top: 875px; height: 150px; background-color:transparent; width: 225px; "></div>
-	</div>
+			<div id="frogLeftImg" style="position: absolute; top: 0px; float: left 0px; height: 1000px; width: 10px; background-color: transparent;"> 
+				<div id="leftFrogImg0" style="position: absolute; top: -25px; height: 150px; background-color:transparent; width: 225px; "></div>
+				<div id="leftFrogImg1" style="position: absolute; top: 75px; height: 150px; background-color:transparent; width: 225px; "></div>
+				<div id="leftFrogImg2" style="position: absolute; top: 175px; height: 150px; background-color:transparent; width: 225px; "></div>
+				<div id="leftFrogImg3" style="position: absolute; top: 275px; height: 150px; background-color:transparent; width: 225px; "></div>
+				<div id="leftFrogImg4" style="position: absolute; top: 375px; height: 150px; background-color:transparent; width: 225px; "></div>
+				<div id="leftFrogImg5" style="position: absolute; top: 475px; height: 150px; background-color:transparent; width: 225px; "></div>
+				<div id="leftFrogImg6" style="position: absolute; top: 575px; height: 150px; background-color:transparent; width: 225px; "></div>
+				<div id="leftFrogImg7" style="position: absolute; top: 675px; height: 150px; background-color:transparent; width: 225px; "></div>
+				<div id="leftFrogImg8" style="position: absolute; top: 775px; height: 150px; background-color:transparent; width: 225px; "></div>
+				<div id="leftFrogImg9" style="position: absolute; top: 875px; height: 150px; background-color:transparent; width: 225px; "></div>
+			</div>
 
-	<div id="frogLeft" style="position: absolute; top: 0px; float: left 0px; height: 1000px; width: 10px; background-color: transparent;"> 
-		<div id="leftFrog0" style="height: 100px; width: 100%; "></div>
-		<div id="leftFrog1" style="height: 100px; width: 100%; "></div>
-		<div id="leftFrog2" style="height: 100px; width: 100%; "></div>
-		<div id="leftFrog3" style="height: 100px; width: 100%; "></div>
-		<div id="leftFrog4" style="height: 100px; width: 100%; "></div>
-		<div id="leftFrog5" style="height: 100px; width: 100%; "></div>
-		<div id="leftFrog6" style="height: 100px; width: 100%; "></div>
-		<div id="leftFrog7" style="height: 100px; width: 100%; "></div>
-		<div id="leftFrog8" style="height: 100px; width: 100%; "></div>
-		<div id="leftFrog9" style="height: 100px; width: 100%; "></div>
-	</div>
+			<div id="frogLeft" style="position: absolute; top: 0px; float: left 0px; height: 1000px; width: 10px; background-color: transparent;"> 
+				<div id="leftFrog0" style="height: 100px; width: 100%; "></div>
+				<div id="leftFrog1" style="height: 100px; width: 100%; "></div>
+				<div id="leftFrog2" style="height: 100px; width: 100%; "></div>
+				<div id="leftFrog3" style="height: 100px; width: 100%; "></div>
+				<div id="leftFrog4" style="height: 100px; width: 100%; "></div>
+				<div id="leftFrog5" style="height: 100px; width: 100%; "></div>
+				<div id="leftFrog6" style="height: 100px; width: 100%; "></div>
+				<div id="leftFrog7" style="height: 100px; width: 100%; "></div>
+				<div id="leftFrog8" style="height: 100px; width: 100%; "></div>
+				<div id="leftFrog9" style="height: 100px; width: 100%; "></div>
+			</div>
 
-	<div id="frogRightImg" style="position: absolute; top: 0px; right: -60px; height: 1000px; width: 100%; background-color: transparent;"> 
-		<div id="rightFrogImg0" style="position: absolute; right: 0px; top: -25px; height: 140px; background-color:transparent; width: 140px; "></div>
-		<div id="rightFrogImg1" style="position: absolute; right: 0px; top: 75px; height: 140px; background-color:transparent; width: 140px; "></div>
-		<div id="rightFrogImg2" style="position: absolute; right: 0px; top: 175px; height: 140px; background-color:transparent; width: 140px; "></div>
-		<div id="rightFrogImg3" style="position: absolute; right: 0px; top: 275px; height: 140px; background-color:transparent; width: 140px; "></div>
-		<div id="rightFrogImg4" style="position: absolute; right: 0px; top: 375px; height: 140px; background-color:transparent; width: 140px; "></div>
-		<div id="rightFrogImg5" style="position: absolute; right: 0px; top: 475px; height: 140px; background-color:transparent; width: 140px; "></div>
-		<div id="rightFrogImg6" style="position: absolute; right: 0px; top: 575px; height: 140px; background-color:transparent; width: 140px; "></div>
-		<div id="rightFrogImg7" style="position: absolute; right: 0px; top: 675px; height: 140px; background-color:transparent; width: 140px; "></div>
-		<div id="rightFrogImg8" style="position: absolute; right: 0px; top: 775px; height: 140px; background-color:transparent; width: 140px; "></div>
-		<div id="rightFrogImg9" style="position: absolute; right: 0px; top: 875px; height: 140px; background-color:transparent; width: 140px; "></div>
-	</div>
+			<div id="frogRightImg" style="position: absolute; top: 0px; right: -60px; height: 1000px; width: 100%; background-color: transparent;"> 
+				<div id="rightFrogImg0" style="position: absolute; right: 0px; top: -25px; height: 140px; background-color:transparent; width: 140px; "></div>
+				<div id="rightFrogImg1" style="position: absolute; right: 0px; top: 75px; height: 140px; background-color:transparent; width: 140px; "></div>
+				<div id="rightFrogImg2" style="position: absolute; right: 0px; top: 175px; height: 140px; background-color:transparent; width: 140px; "></div>
+				<div id="rightFrogImg3" style="position: absolute; right: 0px; top: 275px; height: 140px; background-color:transparent; width: 140px; "></div>
+				<div id="rightFrogImg4" style="position: absolute; right: 0px; top: 375px; height: 140px; background-color:transparent; width: 140px; "></div>
+				<div id="rightFrogImg5" style="position: absolute; right: 0px; top: 475px; height: 140px; background-color:transparent; width: 140px; "></div>
+				<div id="rightFrogImg6" style="position: absolute; right: 0px; top: 575px; height: 140px; background-color:transparent; width: 140px; "></div>
+				<div id="rightFrogImg7" style="position: absolute; right: 0px; top: 675px; height: 140px; background-color:transparent; width: 140px; "></div>
+				<div id="rightFrogImg8" style="position: absolute; right: 0px; top: 775px; height: 140px; background-color:transparent; width: 140px; "></div>
+				<div id="rightFrogImg9" style="position: absolute; right: 0px; top: 875px; height: 140px; background-color:transparent; width: 140px; "></div>
+			</div>
 
-	<div id="frogRight" style="position: absolute; top: 0px; right: 0px; float: right; height: 1000px; width: 10px; background-color: transparent;"> 
-		<div id="rightFrog0" style="height: 100px; width: 100%; "></div>
-		<div id="rightFrog1" style="height: 100px; width: 100%; "></div>
-		<div id="rightFrog2" style="height: 100px; width: 100%; "></div>
-		<div id="rightFrog3" style="height: 100px; width: 100%; "></div>
-		<div id="rightFrog4" style="height: 100px; width: 100%; "></div>
-		<div id="rightFrog5" style="height: 100px; width: 100%; "></div>
-		<div id="rightFrog6" style="height: 100px; width: 100%; "></div>
-		<div id="rightFrog7" style="height: 100px; width: 100%; "></div>
-		<div id="rightFrog8" style="height: 100px; width: 100%; "></div>
-		<div id="rightFrog9" style="height: 100px; width: 100%; "></div>
-	</div>
+			<div id="frogRight" style="position: absolute; top: 0px; right: 0px; float: right; height: 1000px; width: 10px; background-color: transparent;"> 
+				<div id="rightFrog0" style="height: 100px; width: 100%; "></div>
+				<div id="rightFrog1" style="height: 100px; width: 100%; "></div>
+				<div id="rightFrog2" style="height: 100px; width: 100%; "></div>
+				<div id="rightFrog3" style="height: 100px; width: 100%; "></div>
+				<div id="rightFrog4" style="height: 100px; width: 100%; "></div>
+				<div id="rightFrog5" style="height: 100px; width: 100%; "></div>
+				<div id="rightFrog6" style="height: 100px; width: 100%; "></div>
+				<div id="rightFrog7" style="height: 100px; width: 100%; "></div>
+				<div id="rightFrog8" style="height: 100px; width: 100%; "></div>
+				<div id="rightFrog9" style="height: 100px; width: 100%; "></div>
+			</div>
 
 
 
@@ -138,103 +135,103 @@ user-select: none;">
 				<img id="fly" src="fly-right.png" onMouseDown="pauseResume();" style="height: 96px; width: 120px;"></img>
 
 			</div>
-	</div>
-
-	<div id="trail0" style="border-radius: 10px; position: absolute; height: 2px; width: 2px; background-color: white;"></div>
-	<div id="trail1" style="border-radius: 10px; position: absolute; height: 3px; width: 3px; background-color: ebe8fc;"></div>
-	<div id="trail2" style="border-radius: 10px; position: absolute; height: 3px; width: 3px; background-color: ebe8fc;"></div>
-	<div id="trail3" style="border-radius: 10px; position: absolute; height: 4px; width: 4px; background-color: ebe8fc;"></div>
-	<div id="trail4" style="border-radius: 10px; position: absolute; height: 4px; width: 4px; background-color: d7d1fa;"></div>
-	<div id="trail5" style="border-radius: 10px; position: absolute; height: 5px; width: 5px; background-color: d7d1fa;"></div>
-	<div id="trail6" style="border-radius: 10px; position: absolute; height: 5px; width: 5px; background-color: d7d1fa;"></div>
-	<div id="trail7" style="border-radius: 10px; position: absolute; height: 6px; width: 6px; background-color: c3baf7;"></div>
-	<div id="trail8" style="border-radius: 10px; position: absolute; height: 6px; width: 6px; background-color: c3baf7;"></div>
-	<div id="trail9" style="border-radius: 10px; position: absolute; height: 7px; width: 7px; background-color: c3baf7;"></div>
-	<div id="trail10" style="border-radius: 10px; position: absolute; height: 7px; width: 7px; background-color: 9c8cf2;"></div>
-	<div id="trail11" style="border-radius: 10px; position: absolute; height: 8px; width: 8px; background-color: 9c8cf2;"></div>
-	<div id="trail12" style="border-radius: 10px; position: absolute; height: 8px; width: 8px; background-color: 9c8cf2;"></div>
-	<div id="trail13" style="border-radius: 10px; position: absolute; height: 9px; width: 9px; background-color: 8875f0;"></div>
-	<div id="trail14" style="border-radius: 10px; position: absolute; height: 9px; width: 9px; background-color: 8875f0;"></div>
-	<div id="trail15" style="border-radius: 10px; position: absolute; height: 10px; width: 10px; background-color: 7b68ee;"></div>
-	<div id="trail16" style="border-radius: 10px; position: absolute; height: 10px; width: 10px; background-color: 7b68ee;"></div>
-
-
-	
-<div id="deathMenu" style="visibility: hidden; 
-			margin: 0;
-    			position: absolute;
-    			top: 50%;
-    			left: 50%;
-    			transform: translate(-50%, -50%);
-			height: 45%;
-			background: rgba(255, 105, 180, 0.6);
-			width: 33%;			
-			border-radius: 50px;
-			border-color: white; 
-			border-style: solid; 
-			border-width: 7px;
-			color: white;
-			">
-
-	<div id="menuContent" style="height: 150px;">
-
-			<h1 style="margin-top: 40px; margin-bottom: 0px; text-align: center; font-size: 40px;" id="collision">GAME OVER</h1>
-
-			<div id="deathScore" style="padding: 10px; font-size: 32px; color: white; text-align: center; align: center;">Score: </div>
-			<div style="margin-top: 0px; width: 100%; height: 7px; color: white; background-color: white;"></div>
-			<div id="replay" style="padding: 20px; font-size: 40px; color: white; align: center; text-align: center;">
-				<img id="replayIcon" src="replayIcon.png" style="height: 40px; width: auto; padding: 20px; vertical-align: middle;">
-				Replay
-			</div>
-			<div style="margin-top: 0px; width: 100%; height: 7px; color: white; background-color: white;"></div>
-			<div id="about" style="padding: 10px; font-size: 40px; color: white; align: center; text-align: center;">
-
-				<img id="aboutIcon" src="aboutIcon.png" style="height: 40px; width: auto; padding: 20px; vertical-align: middle;">
-			About</div>
-
-	</div>
-</div>
-
-
-
-
-
-<div id="deathMenu" style="visibility: hidden; 
-			margin: 0;
-    			position: absolute;
-    			top: 50%;
-    			left: 50%;
-    			transform: translate(-50%, -50%);
-			height: 45%;
-			background: rgba(255, 105, 180, 0.6);
-			width: 33%;			
-			border-radius: 50px;
-			border-color: white; 
-			border-style: solid; 
-			border-width: 7px;
-			color: white;
-			">
-
-
-		<div id="profile" style="visibility: hidden;">
-				<center>
-				<img id="profilePic" src="proPic.jpg" style="height: 130px; width: auto; vertical-align: middle; margin-top: 30px;">
-				</center>
-			<h1 style="margin-top: 20px; margin-bottom: 0px; text-align: center; font-size: 26px;" id="name">Madelyn Nelson</h1>
-			<h1 style="margin-bottom: 0px; text-align: center; font-size: 26px;">Computer Science</h1>
-			<h1 style="margin-bottom: 0px; text-align: center; font-size: 26px;">Class of 2017</h1>
-			<br>
-			<div style="margin-top: 0px; width: 100%; height: 7px; color: white; background-color: white;"></div>
-			<h1 style="margin-bottom: 0px; text-align: center; font-size: 26px;" id="backButton">Back</h1>
 		</div>
-</div>
+
+		<div id="trail0" style="border-radius: 10px; position: absolute; height: 2px; width: 2px; background-color: white;"></div>
+		<div id="trail1" style="border-radius: 10px; position: absolute; height: 3px; width: 3px; background-color: ebe8fc;"></div>
+		<div id="trail2" style="border-radius: 10px; position: absolute; height: 3px; width: 3px; background-color: ebe8fc;"></div>
+		<div id="trail3" style="border-radius: 10px; position: absolute; height: 4px; width: 4px; background-color: ebe8fc;"></div>
+		<div id="trail4" style="border-radius: 10px; position: absolute; height: 4px; width: 4px; background-color: d7d1fa;"></div>
+		<div id="trail5" style="border-radius: 10px; position: absolute; height: 5px; width: 5px; background-color: d7d1fa;"></div>
+		<div id="trail6" style="border-radius: 10px; position: absolute; height: 5px; width: 5px; background-color: d7d1fa;"></div>
+		<div id="trail7" style="border-radius: 10px; position: absolute; height: 6px; width: 6px; background-color: c3baf7;"></div>
+		<div id="trail8" style="border-radius: 10px; position: absolute; height: 6px; width: 6px; background-color: c3baf7;"></div>
+		<div id="trail9" style="border-radius: 10px; position: absolute; height: 7px; width: 7px; background-color: c3baf7;"></div>
+		<div id="trail10" style="border-radius: 10px; position: absolute; height: 7px; width: 7px; background-color: 9c8cf2;"></div>
+		<div id="trail11" style="border-radius: 10px; position: absolute; height: 8px; width: 8px; background-color: 9c8cf2;"></div>
+		<div id="trail12" style="border-radius: 10px; position: absolute; height: 8px; width: 8px; background-color: 9c8cf2;"></div>
+		<div id="trail13" style="border-radius: 10px; position: absolute; height: 9px; width: 9px; background-color: 8875f0;"></div>
+		<div id="trail14" style="border-radius: 10px; position: absolute; height: 9px; width: 9px; background-color: 8875f0;"></div>
+		<div id="trail15" style="border-radius: 10px; position: absolute; height: 10px; width: 10px; background-color: 7b68ee;"></div>
+		<div id="trail16" style="border-radius: 10px; position: absolute; height: 10px; width: 10px; background-color: 7b68ee;"></div>
+
+
+
+		<div id="deathMenu" style="visibility: hidden; 
+			margin: 0;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			/*height: 45%;*/
+			background: rgba(255, 105, 180, 0.6);
+			/*width: 33%;*/	
+			border-radius: 50px;
+			border-color: white; 
+			border-style: solid; 
+			border-width: 5px;
+			color: white;
+			">
+
+			<div id="menuContent" style="">
+
+				<h1 style="margin-top: 40px; margin-bottom: 0px; text-align: center; font-size: 36px;" id="collision">GAME OVER</h1>
+
+				<div id="deathScore" style="padding: 5px; font-size: 32px; color: white; text-align: center; align: center; margin-bottom: 5px;">Score: </div>
+				<div style="margin-top: 0px; width: 100%; height: 5px; color: white; background-color: white;"></div>
+				<div id="replay" style="padding: 10px; font-size: 40px; color: white; align: center; text-align: center;">
+					<img id="replayIcon" src="replayIcon.png" style="height: 40px; width: auto; padding: 20px; vertical-align: middle;">
+					Replay
+				</div>
+				<div style="margin-top: 0px; width: 100%; height: 5px; color: white; background-color: white;"></div>
+				<div id="about" style="padding: 5px; font-size: 40px; color: white; align: center; text-align: center;">
+
+					<img id="aboutIcon" src="aboutIcon.png" style="height: 40px; width: auto; padding: 20px; vertical-align: middle;">
+					About</div>
+
+			</div>
+		</div>
 
 
 
 
 
-	<script src="physics.js"></script>
+		<div id="deathMenu" style="visibility: hidden; 
+			margin: 0px;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			/*height: 45%;*/
+			background: rgba(255, 105, 180, 0.6);
+			/*width: 33%;*/	
+			border-radius: 50px;
+			border-color: white; 
+			border-style: solid; 
+			border-width: 5px;
+			color: white;
+			">
 
-</body>
+
+			<div id="profile" style="visibility: hidden;">
+				<center>
+					<img id="profilePic" src="proPic.jpg" style="border: 5px solid white; border-radius: 20px; height: 100px; width: auto; vertical-align: middle; margin-top: 40px;">
+				</center>
+				<h1 style="margin-top: 20px; margin-bottom: 0px; text-align: center; font-size: 22px;" id="name">Madelyn Nelson</h1>
+				<h1 style="margin-bottom: 0px; text-align: center; font-size: 22px;">Computer Science</h1>
+				<h1 style="margin-bottom: 0px; text-align: center; font-size: 22px;">Class of 2017</h1>
+				<br>
+				<div style="padding: 0px; margin: 0px; width: 100%; height: 5px; color: white; background-color: white;"></div>
+				<h1 style="margin-bottom: 15px; padding-bottom: 20px; text-align: center; font-size: 22px;" id="backButton">Back</h1>
+			</div>
+		</div>
+
+
+
+
+
+		<script src="physics.js"></script>
+
+	</body>
 
 </html>
