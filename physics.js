@@ -412,7 +412,15 @@ function generateSpikeArray() {
 }
 
 $(document).ready(function(){
-		console.log("fake stuff");
+
+		// start game for first time
+		$("#startGame").click(function() {	
+			start();
+			$("#startMenu").css("visibility", "hidden");	
+			$("#titlePage").css("visibility", "hidden");	
+			$("#scoreBox").css('visibility', 'visible');
+			console.log('started game');
+		});
 
 		// start over
 		$("#replay").click(function() {	
@@ -441,4 +449,3 @@ $(document).ready(function(){
 
 
 
-start();
